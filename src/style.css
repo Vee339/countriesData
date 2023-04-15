@@ -1,0 +1,531 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* border: 1px solid rosybrown; */
+}
+:root {
+  --dark-blue: hsl(209, 23%, 22%);
+  --very-dark-blue: hsl(207, 26%, 17%);
+  --very-dark-blue-text: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+}
+html {
+  height: 100%;
+}
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Nunito Sans", sans-serif;
+  background: var(--very-dark-blue);
+}
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+  background: var(--very-dark-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section.light {
+  background: var(--very-light-gray);
+}
+section .container {
+  width: 100%;
+}
+.header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark-blue);
+  color: white;
+}
+.header .container {
+  width: 100%;
+  height: 100%;
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+section.light .header {
+  background: var(--very-light-gray);
+  color: var(--very-dark-blue-text);
+  border-bottom: 1px solid rgba(67, 66, 66, 0.252);
+}
+.header .theme {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.header .theme .icon {
+  height: 100%;
+  margin-right: 8px;
+  transform: translateY(2px);
+}
+.content {
+  background: var(--very-dark-blue);
+  width: 100%;
+  min-height: calc(100% - 90px);
+  position: relative;
+}
+section.light .content {
+  background: var(--very-light-gray);
+}
+.content .nav {
+  height: 130px;
+  width: 100%;
+  padding: 40px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content .nav .searchBox {
+  height: 100%;
+  width: 450px;
+  padding: 0 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background: var(--dark-blue);
+}
+section.light .content .nav .searchBox {
+  background: white;
+  box-shadow: 2px 2px 11px rgba(120, 120, 120, 0.112),
+    -2px -2px 11px rgba(120, 120, 120, 0.113);
+}
+.content .nav .searchBox .icon {
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+section.light .content .nav .searchBox .icon {
+  color: var(--very-dark-blue-text);
+}
+.content .nav .searchBox input {
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  font-size: 18px;
+  background: transparent;
+  color: white;
+  outline: none;
+  border: none;
+}
+section.light .content .nav .searchBox input {
+  color: var(--very-dark-blue-text);
+}
+
+.content .nav .searchBox input::placeholder {
+  color: white;
+  font-size: 13px;
+}
+section.light .content .nav .searchBox input::placeholder {
+  color: var(--very-dark-blue-text);
+}
+.content .nav .filter {
+  height: 45px;
+  width: 200px;
+  z-index: 100;
+}
+.content .nav .filter .select {
+  height: 45px;
+  width: 200px;
+  background: var(--dark-blue);
+  color: white;
+  border: none;
+  outline: none;
+  margin-bottom: 5px;
+  padding: 0 20px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+section.light .content .nav .filter .select {
+  background: white;
+  color: var(--very-dark-blue-text);
+  box-shadow: 2px 2px 11px rgba(120, 120, 120, 0.112),
+    -2px -2px 11px rgba(120, 120, 120, 0.113);
+}
+.content .nav .filter .select .icon {
+  display: flex;
+  align-items: center;
+  transition: 0.3s all;
+  transform: translateY(2px);
+}
+.content .nav .filter .select.active .icon {
+  transform: rotateX(180deg);
+}
+.content .nav .filter .options {
+  width: 200px;
+  height: 0;
+  background: var(--dark-blue);
+  color: white;
+  border-radius: 5px;
+  opacity: 0;
+  padding-bottom: 5px;
+  overflow: hidden;
+  transition: 0.3s all;
+}
+section.light .content .nav .filter .options {
+  color: var(--very-dark-blue-text);
+  background: white;
+}
+.content .nav .filter .options.active {
+  opacity: 1;
+  height: 205px;
+}
+.content .nav .filter .options .option {
+  height: 40px;
+  width: 100%;
+  padding: 0 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.content .nav .filter .options .option:last-child() {
+  border-radius: 0 0 5px 5px;
+}
+.content .nav .filter .options .option:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.content .countries {
+  width: 100%;
+  padding: 0 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  z-index: 45;
+}
+.content .countries > h3 {
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  width: 100%;
+  margin-top: 150px;
+}
+section.light .content .countries > h3 {
+  color: var(--very-dark-blue-text);
+}
+.card {
+  /* width: 240px; */
+  width: 17%;
+  height: 280px;
+  border-radius: 5px;
+
+  background: var(--dark-blue);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 50;
+}
+section.light .card {
+  background: white;
+  box-shadow: 2px 2px 11px rgba(120, 120, 120, 0.112),
+    -2px -2px 11px rgba(120, 120, 120, 0.113);
+}
+.card .flag {
+  width: 100%;
+  height: 50%;
+}
+section.light .card .flag {
+  border-bottom: 1px solid rgba(84, 83, 83, 0.109);
+}
+.card .flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card .info {
+  color: white;
+  padding: 20px 0 0 15px;
+}
+section.light .card .info {
+  color: var(--very-dark-blue-text);
+}
+.card .info h3 {
+  font-weight: 800;
+  margin-bottom: 13px;
+}
+.card .info p {
+  font-size: 11px;
+  font-weight: 300;
+  margin-bottom: 3px;
+}
+section.light .card .info p {
+  font-weight: 600;
+}
+.card .info p span {
+  font-weight: 600;
+}
+section.light .card .info p span {
+  font-weight: 800;
+}
+/* ================== Country Page =================== */
+.country {
+  padding: 40px 100px;
+  width: 100%;
+  min-height: calc(100vh - 90px);
+}
+section.light .country {
+  background: var(--very-light-gray);
+}
+.country .back {
+  background: var(--dark-blue);
+  width: 90px;
+  height: 30px;
+  margin-bottom: 40px;
+  padding: 0 19px;
+  border-radius: 5px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+section.light .country .back {
+  background: white;
+  color: var(--very-dark-blue-text);
+  box-shadow: 2px 2px 11px rgba(120, 120, 120, 0.112),
+    -2px -2px 11px rgba(120, 120, 120, 0.113);
+}
+.country .data {
+  height: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.country .data .flag {
+  height: 100%;
+  width: 45%;
+}
+section.light .country .data .flag {
+  box-shadow: 2px 2px 11px rgba(120, 120, 120, 0.112),
+    -2px -2px 11px rgba(120, 120, 120, 0.113);
+}
+.country .data .flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.country .data .details {
+  height: 100%;
+  width: 45%;
+  color: white;
+}
+section.light .country .data .details {
+  color: var(--very-dark-blue-text);
+}
+.country .data .details h1 {
+  margin: 30px 0;
+  font-size: 33px;
+}
+.country .data .details .info {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.country .data .details p {
+  font-size: 13px;
+  font-weight: 300;
+}
+section.light .country .data .details p {
+  font-weight: 600;
+}
+.country .data .details span {
+  font-size: 16px;
+  font-weight: 600;
+}
+section.light .country .data .details span {
+  font-weight: 800;
+}
+.country .details .borders {
+  display: flex;
+  align-items: flex-start;
+}
+.country .details .borders > span {
+  margin-right: 20px;
+  width: 25%;
+}
+
+.country .details .borders .countriesName {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 75%;
+  gap: 8px;
+}
+.country .details .borders span.borderCountry {
+  background: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0 5px; */
+  width: 115px;
+  min-height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), -2px -2px 8px rgba(0, 0, 0, 0.3);
+  padding: 0 auto;
+}
+section.light .country .details .borders span.borderCountry {
+  background: white;
+  font-weight: 600;
+  box-shadow: 2px 2px 8px rgba(83, 83, 83, 0.1),
+    -2px -2px 8px rgba(83, 83, 83, 0.1);
+}
+
+/* ===================== Colors Styling ================================*/
+
+@media screen and (max-width: 1266px) {
+  .content .countries {
+    gap: 35px;
+  }
+  .card {
+    width: 22%;
+  }
+}
+@media screen and (max-width: 1074px) {
+  .content .nav .searchBox {
+    width: 350px;
+  }
+  .content .countries {
+    gap: 30px;
+  }
+  .card {
+    width: 30%;
+  }
+  .country .data {
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+  }
+  .country .data .flag {
+    width: 480px;
+    height: 350px;
+    margin-bottom: 40px;
+  }
+  .country .data .details {
+    width: 100%;
+  }
+  .country .data .details .info {
+    flex-direction: column;
+    line-height: 30px;
+  }
+  .country .data .details .info .left {
+    margin-bottom: 40px;
+  }
+  .country .details .borders {
+    flex-direction: column;
+  }
+  .country .details .borders > span {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  .country .details .borders .countriesName {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .content .nav {
+    height: 210px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .content .nav .searchBox {
+    width: 100%;
+    height: 50px;
+  }
+  .card {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 660px) {
+  .header .container {
+    padding: 0 30px;
+  }
+  .content .nav {
+    padding: 40px 30px;
+  }
+  .content .countries {
+    padding: 0 30px;
+  }
+  .country {
+    padding: 40px 50px;
+  }
+  .country .data .flag {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 490px) {
+  .header .container {
+    padding: 0 10px;
+  }
+  .header .container h2 {
+    font-size: 20px;
+  }
+  .header .theme {
+    font-size: 15px;
+  }
+  .content .nav {
+    padding: 40px 50px;
+  }
+  .content .countries {
+    padding: 0 50px;
+  }
+  .card {
+    width: 100%;
+  }
+  .country {
+    padding: 40px 30px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .header .container {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  .header .theme {
+    margin: 12px 0 8px;
+    align-self: flex-end;
+    font-size: 12px;
+  }
+  .content .nav {
+    padding: 40px 20px;
+  }
+  .content .countries {
+    padding: 0 10px;
+  }
+  .country .data .flag {
+    padding: 0 10px;
+  }
+}
+@media screen and (min-width: 1536px) {
+  section .container {
+    width: 1536px;
+  }
+  .header .container {
+    width: 1536px;
+  }
+}
